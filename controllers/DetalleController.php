@@ -6,21 +6,17 @@ use Exception;
 use Model\Cliente; 
 use MVC\Router; 
 
-class ClienteController {
+class DetalleController {
 
     public static function estadisticas(Router $router){
-        $router->render('cliente/estadisticas');
+        $router->render('productos/estadisticas');
     }
 
 
     public static function detalleVentasAPI(){
         try {
 
-            $sql = ' SELECT cli_nombre AS cliente, SUM(detalle_cantidad) AS cantidad
-FROM detalle_venta
-INNER JOIN clientes ON detalle_cliente = cli_id
-WHERE detalle_situacion = 1
-GROUP BY cli_nombre';
+            $sql = 'SELECT CLI_NOMBRE AS CLIENTE, SUM (DETALLE_CANTIDAD) AS CANTIDAD_PRODUCTOS FROM DETALLE_VENTA INNER JOIN CLIENTES ON DETALLE_CLIENTE = CLI_ID WHERE DETALLE_SITUACION = 1 GROUP BY CLI_NOMBRE';
 
             $datos = Cliente::fetchArray($sql);
             
@@ -33,7 +29,5 @@ GROUP BY cli_nombre';
             ]);
         }
     }
-
-
 
 }

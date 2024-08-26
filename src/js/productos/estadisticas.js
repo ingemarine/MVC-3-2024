@@ -8,14 +8,14 @@ const btnActualizar = document.getElementById('actualizar');
 const data = {
     labels: [],
     datasets: [{
-        label: 'Cliente',
+        label: 'Ventas por Cliente',
         data: [],
         borderWidth: 5,
         backgroundColor: []
     }]
 };
 
-const chartProductos = new Chart(ctx, {
+const chartClientes = new Chart(ctx, {
     type: 'bar',
     data: data,
 });
@@ -26,26 +26,29 @@ const getEstadisticas = async () => {
     const response = await fetch(url, config);
     const data = await response.json()
 
+    console.log(data)
+
     if(data){
-        if(chartProductos.data.datasets[0]) {
-            chartProductos.data.labels = [];
-            chartProductos.data.datasets[0].data = [];
-            chartProductos.data.datasets[0].backgroundColor = [];
+        if(chartClientes.data.datasets[0]) {
+            chartClientes.data.labels = []; 
+            chartClientes.data.datasets[0].data = []; 
+            chartClientes.data.datasets[0].backgroundColor = []; 
+
             data.forEach(r => {
-                chartProductos.data.labels.push(r.nombre);
-                chartProductos.data.datasets[0].data.push(r.cantidad);
-                chartProductos.data.datasets[0].backgroundColor.push(generateRandomColor());
+                chartClientes.data.labels.push(r.cliente); 
+                chartClientes.data.datasets[0].data.push(r.cantidad_productos);
+                chartClientes.data.datasets[0].backgroundColor.push(generateRandomColor());
             });
         }
     }
 
-    chartProductos.update();
+    chartClientes.update();
 }
 
 const generateRandomColor = () => {
-    const r = Math.floor(Math.random() * 256); // Valor de rojo entre 0 y 255
-    const g = Math.floor(Math.random() * 256); // Valor de verde entre 0 y 255
-    const b = Math.floor(Math.random() * 256); // Valor de azul entre 0 y 255
+    const r = Math.floor(Math.random() * 256); 
+    const g = Math.floor(Math.random() * 256); 
+    const b = Math.floor(Math.random() * 256); 
 
     const rgbColor = `rgb(${r}, ${g}, ${b})`;
     return rgbColor;
