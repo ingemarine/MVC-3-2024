@@ -33,11 +33,11 @@
                         </a>
                         <ul class="dropdown-menu  dropdown-menu-dark "id="dropwdownRevision" style="margin: 0;">
                             <!-- <h6 class="dropdown-header">Información</h6> -->
-                            <li>
-                                <a class="dropdown-item nav-link text-white " href="/aplicaciones/nueva"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Subitem</a>
-                            </li>
+        
                         
-                    
+                            <li>
+                                <a class="dropdown-item nav-link text-white " href="/MVC-3-2024/cliente/estadisticas"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Estadísticas</a>
+                            </li>
                         
                         </ul>
                     </div> 
